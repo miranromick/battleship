@@ -1,0 +1,14 @@
+td {
+  border: 2px solid black;
+  border-collapse: collapse;
+  height: 50px;
+  width: 50px;
+}
+table{
+  border-collapse: collapse;
+}
+
+body{
+  background-image: url(https://unsplash.com/search/ocean?photo=bY6baTGwoG0);
+  
+}
