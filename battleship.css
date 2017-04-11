@@ -3,6 +3,7 @@ td {
   border-collapse: collapse;
   height: 50px;
   width: 50px;
+
 }
 table{
   border-collapse: collapse;
@@ -10,5 +11,13 @@ table{
 
 body{
   background-image: url(https://unsplash.com/search/ocean?photo=bY6baTGwoG0);
-  
+
+}
+
+td:hover{
+  background-color: grey;
+
+}
+td.hit {
+  background-color: red;
 }
