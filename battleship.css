@@ -33,5 +33,10 @@ td.miss {
 }
 h1{
   text-align: center;
+}
 
+#outcome{
+  color: red;
+  font-size: 100px;
+  text-align: center;
 }
