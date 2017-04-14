@@ -1,6 +1,7 @@
 var missCounter = 25
 var hitCounter = 5
 var otherCounter = 0
+var SHIPSIZE =[5, 4, 3, 3, 2]
 var ships = [
   ["","","","","","","","","",""],
   ["","","","","","","","","",""],
@@ -24,36 +25,36 @@ var randomCell = Math.floor(Math.random()*10)
 //something is broken with the randomRow Random Cell generator and the check for hit
 
 function fit(row, cell) {
-
-  var x = row - 1
-  if (x < 0) {
-    x = row
+// x
+  var a = row - 1
+  if (a < 0) {
+    a = row
   }
-
-  var xx = row + 1
-  if (xx > 9) {
-    xx = row
+// xx
+  var aa = row + 1
+  if (aa > 9) {
+    aa = row
   }
-
-  var y = cell - 1
-  if (y < 0) {
-    y = cell
+// y
+  var d = cell - 1
+  if (d < 0) {
+    d = cell
   }
-
-  var yy = cell + 1
-  if (yy > 9) {
-    yy = cell
+// yy
+  var dd = cell + 1
+  if (dd > 9) {
+    dd = cell
   }
 
   return (ships[row][cell] === "ship" ||
-          ships[row][y] === "ship" ||
-          ships[row][yy] === "ship" ||
-          ships[x][cell] === "ship" ||
-          ships[x][y] === "ship" ||
-          ships[x][yy] === "ship" ||
-          ships[xx][cell] === "ship" ||
-          ships[xx][y] === "ship" ||
-          ships[xx][yy] === "ship"
+          ships[row][d] === "ship" ||
+          ships[row][dd] === "ship" ||
+          ships[a][cell] === "ship" ||
+          ships[a][d] === "ship" ||
+          ships[a][dd] === "ship" ||
+          ships[aa][cell] === "ship" ||
+          ships[aa][d] === "ship" ||
+          ships[aa][dd] === "ship"
           )
 }
 
@@ -90,14 +91,17 @@ for (var x = 0; x < 10; x++) {
 
 function checkForHits(e){
   var coordinate = e.target.id
+  var row = coordinate[0]
+  var col = coordinate[1]
+
   // var row =
-  if(ships[parseInt(tr.id)][coordinate.split("")[1]] === "ship" && hitCounter > 0 && missCounter > 0) {
+  if(ships[row][col] === "ship" && hitCounter > 0 && missCounter > 0) {
     document.getElementById(coordinate).className = "hit"
     document.getElementById(coordinate).innerHTML = "<img src='http://www.clker.com/cliparts/c/Z/f/z/4/J/navy-ship-hi.png'/>"
     hitCounter--
     document.getElementById("hits").innerHTML = "Remaining Ships: " + hitCounter
   }
-  if(ships[parseInt(tr.id)][coordinate.split("")[1]] === "" && hitCounter > 0 && missCounter > 0) {
+  if(ships[row][col] === "" && hitCounter > 0 && missCounter > 0 && document.getElementById(coordinate).className != "hit" && document.getElementById(coordinate).className != "miss") {
     document.getElementById(coordinate).className = "miss"
     missCounter--
     document.getElementById("misses").innerHTML = "Remaining torpedos: " + missCounter
